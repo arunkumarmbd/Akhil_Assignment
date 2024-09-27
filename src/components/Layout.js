@@ -17,9 +17,10 @@ export default function Layout() {
       </div>
       <Header />
       <HeroSlider />
-      <WhatNew />
-      <WhoWe />
       <About />
+      {/* <WhatNew /> */}
+      <WhoWe />
+    
       <WhatWe />
     </>
   )

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import goalImg from "../assets/logo.png"
 
-const WeDoCard = ({ picture, Title, Text }) => {
+const WeDoCard = ({ picture, Title, Text, Btext }) => {
   return (
     <>
 
@@ -14,6 +14,10 @@ const WeDoCard = ({ picture, Title, Text }) => {
           <Card.Text>
             {Text}
           </Card.Text>
+          <div className='btnSetting'>
+
+          <a href="#" className='default-btn btn'>{Btext}</a>
+          </div>
         </Card.Body>
       </Card>
     </>

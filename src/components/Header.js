@@ -2,6 +2,7 @@ import React from 'react'
 import { Col, Container, Nav, Navbar, NavDropdown, Offcanvas, Row } from 'react-bootstrap'
 import logo from '../assets/logo.png'
 import '../style/common.css';
+import WhatNew from './WhatNew'
 
 export default function Header() {
     return (
@@ -9,18 +10,50 @@ export default function Header() {
             <header>
                 <div className='topHeader'>
                     <Container>
-                        <Row>
+                        <Row className='align-items-center'>
                             <Col>
                                 <div className='informationSection'>
+                                    
+                                    <div className='emailSection'>
+                                        <a href='mailto:sales@akhilsystems.com'>
+                                            <i class="fa-solid fa-envelope"></i> sales@akhilsystems.com
+                                        </a>
+                                    </div>
+                                    <div className='divide'>|</div>
                                     <div className='phoneSection'>
                                         <a href='tel:+91 8447846239'>
                                             <i class="fa-solid fa-phone"></i> +91 -  8447846239
                                         </a>
                                     </div>
-                                    <div className='divide'>|</div>
+                                </div>
+                            </Col>
+                            <Col>
+                                <div className='informationSectionNew'>
+                                <WhatNew />                             
+                                  
+                                </div>
+                            </Col>
+                            <Col>
+                                <div className='informationSection'>
+                                    <div className='phoneSection'>
+                                        <a href='#'>
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                        </a>
+                                    </div>
+                                    
                                     <div className='emailSection'>
-                                        <a href='mailto:sales@akhilsystems.com'>
-                                            <i class="fa-solid fa-envelope"></i> sales@akhilsystems.com
+                                        <a href='#'>
+                                        <i class="fa-brands fa-twitter"></i>
+                                        </a>
+                                    </div>
+                                    <div className='emailSection'>
+                                        <a href='#'>
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                        </a>
+                                    </div>
+                                    <div className='emailSection'>
+                                        <a href='#'>
+                                        <i class="fa-brands fa-instagram"></i>
                                         </a>
                                     </div>
                                 </div>
