@@ -2,10 +2,58 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+/* For Chrome, Safari, and Edge */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type='number'] {
+  -moz-appearance: textfield; /* Removes the arrows */
+}
+
+.customModel .modal-content {
+    padding: 20px;
+}
 .customLogo img {
     width: 250px;
 }
-
+.errorCls{
+    color:#f00;
+}
+.btnsub {
+    font-family: "Poppins", sans-serif !important;
+}
+.customModel .modal-content form label{
+    font-family: "Poppins", sans-serif;
+}
+.customModel .modal-content form  input{
+    padding: 15px;
+}
+.customModel .modal-content form input::placeholder, .customModel .modal-content form textarea::placeholder{
+color: #ccc;
+font-weight: 300;
+}
+.customModel .modal-content form input, .customModel .modal-content form textarea  {
+    padding: 12px;
+    font-family: "Poppins", sans-serif;
+}
+.errormsg{
+    color: #f00;
+    margin-bottom: 0;
+}
+.customModel .modal-content .modal-header {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+.customModel .modal-content .modal-header .modal-title{
+    font-family: "Poppins", sans-serif !important;
+}
 .topHeader {
     background: rgb(26 34 53);
     padding: 10px;
