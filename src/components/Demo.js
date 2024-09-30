@@ -18,7 +18,7 @@ function Demo({ show, handleClose }) {
 
   const handlePhoneChange = (e) => {
     const input = e.target.value;
-    if (input.length <= 10 && /^\d*$/.test(input)) { // Ensures only numbers are allowed
+    if (input.length <= 10 && /^\d*$/.test(input)) { 
       setPhone(input);
     }
   };
