@@ -180,7 +180,10 @@ html .njs-sticky-side.image_button_cover.placement-right {
     right: 0;
     cursor: pointer;
 }
-
+.customModel .alert-success {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
 html .njs-sticky-side.image_button_cover {
     position: fixed;
     top: 50%;

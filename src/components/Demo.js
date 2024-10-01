@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
 
 function Demo({ show, handleClose }) {
   const [validated, setValidated] = useState(false);
@@ -13,60 +14,59 @@ function Demo({ show, handleClose }) {
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState("");
   const [phoneError, setPhoneError] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [successMessage, setSuccessMessage] = useState("");
 
+  const handleNameChange = (e) => {
+    const input = e.target.value;
+    const nameRegex = /^[a-zA-Z\s]*$/;
+    if (nameRegex.test(input)) {
+      setName(input);
+    }
+  };
 
   const handlePhoneChange = (e) => {
     const input = e.target.value;
-    if (input.length <= 10 && /^\d*$/.test(input)) { 
+    if (input.length <= 10 && /^\d*$/.test(input)) {
       setPhone(input);
     }
   };
 
-  const validateForm = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValidName = name.length > 0;
-    const isValidEmail = emailRegex.test(email);
-    const isValidPhone = phone.length === 10;
-
-    if (isValidName && isValidEmail && isValidPhone) {
-      setIsButtonDisabled(false);
-    } else {
-      setIsButtonDisabled(true);
-    }
-  };
-
-  useEffect(() => {
-    validateForm();
-  }, [name, email, phone]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let isValid = true;
 
     if (!name.length) {
       setNameError("Please Enter Your Name");
-      return;
+      isValid = false;
     } else {
       setNameError("");
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setEmailError("Please Enter a valid Email");
-      return;
+      isValid = false;
     } else {
       setEmailError("");
     }
 
-
     if (!phone.length) {
-      setPhoneError("Enter your phone number");
-      return;
-    } else if (phone.length !== 10) {
+      setPhoneError("Please Enter Your Phone Number");
+      isValid = false;
+    } else if (phone.length < 10) {
       setPhoneError("Phone number is invalid");
-      return;
+      isValid = false;
     } else {
       setPhoneError("");
+    }
+
+    if (isValid) {
+      setSuccessMessage("Your request has been received. Our team will respond shortly.");
+      setName("");
+      setEmail("");
+      setPhone("");
+    } else {
+      setSuccessMessage("");
     }
   };
 
@@ -92,7 +92,8 @@ function Demo({ show, handleClose }) {
               <Form.Control
                 type="text"
                 placeholder="Your Name"
-                onChange={(e) => setName(e.target.value)}
+                value={name}
+                onChange={handleNameChange}
               />
             </Form.Group>
             {nameError && <p className='errormsg'>{nameError}</p>}
@@ -103,6 +104,7 @@ function Demo({ show, handleClose }) {
               <Form.Control
                 type="text"
                 placeholder="Your Email"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
@@ -128,11 +130,14 @@ function Demo({ show, handleClose }) {
           </Col>
         </Row>
 
-
-        <Button type="submit" className='btnsub default-btn btn' disabled={isButtonDisabled}>
-          Submit
-        </Button>
+        <Button type="submit" className='btnsub default-btn btn'>Submit</Button>
       </Form>
+
+      {successMessage && (
+        <Alert variant="success" className="mt-3">
+          {successMessage}
+        </Alert>
+      )}
     </Modal>
   );
 }
